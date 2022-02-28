@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Category from "./components/categoryBar/Category";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
+
 import BrandFilter from "./pages/BrandFilter";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 import { products } from "./store/product";
 
 const App = () => {
@@ -16,22 +16,21 @@ const App = () => {
   }, [productData]);
 
   return (
-    <div>
-      <Header />
-      <Category category={productData} />
+    <>
       <Routes>
         <Route path="/" element={<Home productData={productData} />} />
         <Route
           path="/:brand"
-          element={<BrandFilter category={productData} />}
+          element={<BrandFilter productData={productData} />}
         />
         <Route
           path="/:brand/:details"
-          element={<Details productDetailsData={productData} />}
+          element={<Details productData={productData} />}
         />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
       </Routes>
-      <Footer />
-    </div>
+    </>
   );
 };
 

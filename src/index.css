@@ -1,4 +1,6 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   body {
@@ -9,5 +11,25 @@
   }
 }
 
-@tailwind components;
-@tailwind utilities;
+@layer components {
+  .center-b {
+    @apply flex justify-between items-center;
+  }
+  .input-warper {
+    @apply py-2 flex flex-col gap-1;
+  }
+  .btn {
+    @apply font-bold text-lg flex gap-2 justify-center items-center py-[6px] text-white;
+  }
+  .center {
+    @apply flex justify-center  items-center;
+  }
+}
+@layer utilities {
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 220px));
+    grid-auto-rows: auto;
+    gap: 0.7rem;
+  }
+}

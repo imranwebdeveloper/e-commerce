@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { filleterProduct } from "../../store/slice/contentsSlice";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Category = ({ category }) => {
   const dispatch = useDispatch();
@@ -8,9 +8,8 @@ const Category = ({ category }) => {
     "All",
     ...new Set(category.map((item) => item.category)),
   ];
-  const activeClass = " ";
   return (
-    <div className="container mx-auto ">
+    <section className="container mx-auto ">
       <ul className=" m-2 flex justify-center whitespace-nowrap overflow-x-scroll scrollbar-hide gap-2  ">
         {filterProducts.map((item, index) => {
           return (
@@ -32,7 +31,7 @@ const Category = ({ category }) => {
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };
 export default Category;

@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "../components/card/ProductCard";
+import Category from "../components/categoryBar/Category";
+import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
 
-const BrandFilter = ({ category }) => {
+const BrandFilter = ({ productData }) => {
   const filterData = useSelector((state) => state.content.product);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     if (filterData === "All") {
-      setData(category);
+      setData(productData);
     } else {
-      const getData = category.filter((item) => {
+      const getData = productData.filter((item) => {
         return item.category.replace(/ /g, "-") === filterData;
       });
       setData(getData);
     }
-  }, [filterData, category]);
+  }, [filterData, productData]);
 
   return (
-    <main className="p-4">
-      <section className="container mx-auto">
-        <ProductCard getFilterData={data} />
-      </section>
-    </main>
+    <>
+      <Header />
+      <Category category={productData} />
+      <main className="p-4">
+        <div className="container mx-auto">
+          <ProductCard getFilterData={data} />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 };
 

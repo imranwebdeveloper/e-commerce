@@ -8,14 +8,16 @@ const ProductCard = ({ getFilterData }) => {
 
   return (
     <>
-      <h1 className=" text-slate-600 mb-2">Collection </h1>
-      <div className=" grid grid-cols-2 place-items-center md:grid-cols-3 lg:grid-cols-5 gap-y-4 ">
+      <div className="py-4 ">
+        <h1 className=" text-slate-600 text-center ">Latest Collection</h1>
+      </div>
+      <div className="auto-grid  justify-center ">
         {getFilterData.map((item) => {
           return (
             <Link
               to={`/${item.category.replace(/ /g, "-")}/${item.id}`}
               key={item.id}
-              className="bg-white w-40 md:w-60 h-full  p-4 flex flex-col  transition-all duration-200 hover:shadow hover:scale-105 rounded cursor-pointer"
+              className="bg-white border  h-full  p-4 flex flex-col  transition-all duration-200 hover:shadow hover:scale-105 rounded cursor-pointer"
             >
               <img
                 src={item.image}
@@ -25,7 +27,7 @@ const ProductCard = ({ getFilterData }) => {
               <div className="text-slate-700">
                 <h3 className=" h-16 md:h-11 flex items-center mb-1">
                   {item.title.length > 40
-                    ? item.title.slice(0, 40) + "..."
+                    ? item.title.slice(0, 35) + "..."
                     : item.title}
                 </h3>
                 <p className="text-red-500 font-bold mb-1">Tk {item.price}</p>
